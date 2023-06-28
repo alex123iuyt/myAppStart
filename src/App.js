@@ -6,9 +6,10 @@ import { BrowserRouter } from "react-router-dom";
 // import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/global";
 import Navbar from "./components/header/Navbar";
-const Container = styled.div`
-  background-color: #fff;
-`;
+
+import BackgroundEffect from "./background-effect/BackgroundEffect";
+
+const Container = styled.div``;
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <GlobalStyle />
       <Container>
         <Navbar />
+        <BackgroundEffect />
       </Container>
     </BrowserRouter>
   );

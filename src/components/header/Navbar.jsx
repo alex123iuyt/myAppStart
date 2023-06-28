@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -10,11 +10,18 @@ const Container = styled.header`
   justify-content: space-between;
   padding: 1.12rem 4rem;
   backdrop-filter: blur(17.5px);
-  background: rgba(30, 27, 27, 0.6);
+  background: rgba(61, 56, 56, 0.6);
   border-bottom: 1px solid rgb(73, 73, 73);
   height: 5rem;
-  position: relative;
-  width: 100%;
+  position: sticky;
+  top: 0;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
 `;
 
 const Logo = styled.img`
@@ -23,25 +30,10 @@ const Logo = styled.img`
 `;
 
 const Navigation = styled.nav`
-  ul {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
-    position: relative;
-  }
-`;
-const CategoryItemWrapper = styled(Link)`
-  cursor: pointer;
-`;
-const ProductContainer = styled.div`
-  position: relative;
-  &:hover ${ProductCategoryContainer} {
-    visibility: visible;
-  }
-  &:hover ${CategoryItemWrapper} {
-    transform: scale(0.8);
-  }
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Item = styled(Link)`
@@ -73,8 +65,33 @@ const Button = styled(Link)`
   border-radius: 2rem;
 `;
 
+const ProductCategoryWrapper = styled.div`
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 0;
+  width: 100%;
+  display: ${(props) => (props.expanded ? "block" : "none")};
+  background: rgba(61, 56, 56, 0.6);
+  z-index: 1;
+  cursor: pointer;
+`;
+const ProductLink = styled(Item)`
+  position: relative;
+
+  &:hover {
+    color: #12d7c2;
+    border-bottom: 1px solid #12d7c2;
+    padding-bottom: 1px;
+
+    & ~ ${ProductCategoryContainer} {
+      display: block;
+    }
+  }
+`;
+
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleExpand = () => {
     setExpanded(true);
@@ -83,21 +100,29 @@ const Navbar = () => {
   const handleCollapse = () => {
     setExpanded(false);
   };
+
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset;
+    setIsScrolled(scrollTop > 0);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <Container>
-      <Logo src="./public/images/Logo.svg" alt="Logo" />
+    <Container isScrolled={isScrolled}>
+      <ProductCategoryWrapper expanded={expanded} onMouseLeave={handleCollapse}>
+        <ProductCategoryContainer />
+      </ProductCategoryWrapper>
       <Navigation>
+        <Logo src="/public/images/Logo.svg" alt="Logo" />
+
         <ul>
           <li>
-            <Item>
-              <ProductContainer
-                onMouseEnter={handleExpand}
-                onMouseLeave={handleCollapse}
-              >
-                Product
-                {expanded && <ProductCategoryContainer />}
-              </ProductContainer>
-            </Item>
+            <ProductLink onMouseEnter={handleExpand}>Product</ProductLink>
           </li>
           <li>
             <Item to="/about">About</Item>

@@ -1,25 +1,55 @@
 import styled from "styled-components";
+
 import React from "react";
+
 import { BrowserRouter } from "react-router-dom";
 
-// import { createGlobalStyle } from "styled-components";
-// import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./styles/global";
+
 import Navbar from "./components/header/Navbar";
 
-import BackgroundEffect from "./background-effect/BackgroundEffect";
+import Hero from "./components/hero/hero";
 
-const Container = styled.div``;
+import BackgroundEffect from "./components/background-effect/BackgroundEffect";
+
+import Partners from "./components/partners/partners";
+
+import About from "./components/about/about";
+
+import Category from "./components/category/category";
+
+import VideoBlock from "./components/VideoBlock/VideoBlock";
+
+const AppContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: auto;
+`;
+
+const Background = styled.div`
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+`;
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <GlobalStyle />
-      <Container>
+    <AppContainer>
+      <BrowserRouter>
+        <Background>
+          <BackgroundEffect />
+        </Background>
         <Navbar />
-        <BackgroundEffect />
-      </Container>
-    </BrowserRouter>
+        <Hero />
+        <Partners />
+        <About />
+        <Category />
+        <VideoBlock />
+      </BrowserRouter>
+      <GlobalStyle />
+    </AppContainer>
   );
 };
 

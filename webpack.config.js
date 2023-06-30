@@ -12,8 +12,17 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[contenthash].[ext]",
+              outputPath: "images",
+              publicPath: "images",
+            },
+          },
+        ],
         exclude: /node_modules/,
-        use: "babel-loader",
       },
       {
         test: /\.css$/,

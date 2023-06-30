@@ -6,17 +6,17 @@ const GlobalStyle = createGlobalStyle`
    
     }
 
-  
+ 
     input[data-autocompleted] {
         background-color: transparent !important;
     }
 
     html,
     body {
-      height: 100vh;
-      background-color: #1E1B1B;
       margin: 0;
       padding: 0;
+  background-color: #1e1b1b;
+
     }
     
     img {

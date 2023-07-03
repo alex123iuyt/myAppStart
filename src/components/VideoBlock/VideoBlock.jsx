@@ -11,10 +11,7 @@ const VideoBlock = () => {
   };
 
   return (
-    <VideoContainer
-      onClick={handleClick}
-      isFullWidth={isFullWidth}
-    >
+    <VideoContainer onClick={handleClick} isFullWidth={isFullWidth}>
       <Video ref={videoRef} autoPlay loop muted>
         <source src={videoFile} type="video/mp4" />
       </Video>
@@ -23,3 +20,5 @@ const VideoBlock = () => {
 };
 
 export default VideoBlock;
+
+

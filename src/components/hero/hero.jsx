@@ -13,6 +13,7 @@ import {
   ButtonContainer,
 } from "./styled-component";
 
+import Model from "../box/box";
 const Hero = () => {
   return (
     <Grid>
@@ -29,6 +30,8 @@ const Hero = () => {
           </ButtonContainer>
         </TextContainer>
         <ImageContainer>
+          <Model />
+
           <Image src={heroImage} alt="Image" />
         </ImageContainer>
       </Container>

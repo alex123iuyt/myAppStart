@@ -25,6 +25,17 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.(glb|gltf)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "models",
+            },
+          },
+        ],
+      },
+      {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },

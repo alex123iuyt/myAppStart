@@ -1,7 +1,5 @@
 import styled from "styled-components";
-
 import React from "react";
-
 import { BrowserRouter } from "react-router-dom";
 
 import GlobalStyle from "./styles/global";
@@ -19,6 +17,8 @@ import About from "./components/about/about";
 import Category from "./components/category/category";
 
 import VideoBlock from "./components/VideoBlock/VideoBlock";
+
+import CustomSlider from "./components/slider/CustomSlider";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -47,6 +47,7 @@ const App = () => {
         <About />
         <Category />
         <VideoBlock />
+        <CustomSlider />
       </BrowserRouter>
       <GlobalStyle />
     </AppContainer>

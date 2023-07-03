@@ -6,16 +6,16 @@ export const VideoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 24rem; /* Начальная высота блока */
-  width: 48rem; /* Начальная ширина блока */
+  height: 24rem;
+  width: 48rem;
   background-color: #f1f1f1;
   transition: width 0.5s ease-in-out;
 
   ${(props) =>
     props.isFullWidth &&
     css`
-      width: 100vw; /* Ширина на весь экран, когда isFullWidth === true */
-      height: 100vh; /* Высота на весь экран, когда isFullWidth === true */
+      width: 100vw;
+      height: 100vh;
     `}
 `;
 

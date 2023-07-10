@@ -139,7 +139,7 @@ const BackgroundEffect = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} style={{ width: "100%", height: "1000px" }} />;
+  return <canvas ref={canvasRef} style={{ width: "100%", height: "950px" }} />;
 };
 
 export default BackgroundEffect;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import React from "react";
 
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import GlobalStyle from "./styles/global";
 
@@ -14,11 +14,19 @@ import BackgroundEffect from "./components/background-effect/BackgroundEffect";
 
 import Partners from "./components/partners/partners";
 
-import About from "./components/about/about";
+import About from "./pages/about/about";
 
 import Category from "./components/category/category";
 
-import VideoBlock from "./components/VideoBlock/VideoBlock";
+// import VideoBlock from "./components/VideoBlock/VideoBlock";
+
+// import Slider from "./components/slider/slider";
+
+import { Home } from "./pages/Main/home";
+
+import Implants from "./pages/catalog/implants";
+
+import Footer from "./pages/footer/footer";
 
 const AppContainer = styled.div`
   width: 100%;
@@ -37,17 +45,25 @@ const Background = styled.div`
 const App = () => {
   return (
     <AppContainer>
-      <BrowserRouter>
-        <Background>
-          <BackgroundEffect />
-        </Background>
+      <Router>
         <Navbar />
-        <Hero />
-        <Partners />
-        <About />
-        <Category />
-        <VideoBlock />
-      </BrowserRouter>
+        <Routes>
+          <Route path="/category" element={<Category />} />
+          <Route path="/implants" element={<Implants />} />
+          <Route path="/about" element={<About />} />
+          <Route
+            path="*"
+            element={
+              <>
+                <Hero />
+                <Partners />
+                <Category />
+              </>
+            }
+          />
+        </Routes>
+      </Router>
+      <Footer />
       <GlobalStyle />
     </AppContainer>
   );

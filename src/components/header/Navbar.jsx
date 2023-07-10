@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+
 import {
   Container,
   ProductCategoryWrapper,
@@ -10,8 +10,12 @@ import {
   Divider,
   Language,
 } from "./styled-component";
+
 import OutlineButton from "../buttons/OutlineButton";
+
 import ProductCategoryContainer from "../ProductCategory/ProductCategory";
+
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [expanded, setExpanded] = useState(false);
@@ -42,14 +46,16 @@ const Navbar = () => {
         <ProductCategoryContainer />
       </ProductCategoryWrapper>
       <Navigation>
-        <Logo src="/images/Logo.svg" alt="Logo" />
+        <NavLink to="../../pages/Main/">
+          <Logo src="/images/Logo.svg" alt="Logo" />
+        </NavLink>
 
         <ul>
           <li>
             <ProductLink onMouseEnter={handleExpand}>Product</ProductLink>
           </li>
           <li>
-            <Item to="/about">About</Item>
+            <NavLink to="/about">About</NavLink>
           </li>
           <li>
             <Item to="/services">Services</Item>

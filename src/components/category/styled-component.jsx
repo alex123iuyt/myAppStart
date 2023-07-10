@@ -4,6 +4,7 @@ export const Container = styled.div`
   max-width: 100rem;
   margin: 0 auto;
   margin-top: 10rem;
+  padding: 7.75rem 2rem 4rem;
 
   @media (min-width: 768px) {
     max-width: 100rem;
@@ -38,7 +39,7 @@ export const CategoryItem = styled.li`
   }
 `;
 
-export const Image = styled.img`
+export const Img = styled.img`
   display: flex;
   width: 100%;
 `;

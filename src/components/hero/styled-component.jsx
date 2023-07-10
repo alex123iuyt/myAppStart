@@ -5,8 +5,9 @@ export const Grid = styled.div`
   background-image: url(${grid});
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  height: 51rem;
   overflow: hidden;
+  margin-bottom: 15rem;
 `;
 
 export const Container = styled.div`
@@ -59,7 +60,7 @@ export const Description = styled.p`
   }
 `;
 
-export const ImageContainer = styled.div`
+export const CanvasContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 2rem 0;
@@ -92,4 +93,14 @@ export const ButtonContainer = styled.div`
     align-items: center;
     margin-bottom: 0;
   }
+`;
+
+export const BlurBlock = styled.div`
+  width: 100%;
+  height: 100px;
+  background-color: #1e1b1b;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  filter: blur(18px);
 `;
